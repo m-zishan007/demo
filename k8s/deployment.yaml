@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-demo
+  labels:
+    app: springboot-demo
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: springboot-demo
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: springboot-demo
+    spec:
+      containers:
+        - name: springboot-demo
+          # Replace 'mzishan007' with your actual Docker Hub ID
+          image: mzishan007/demo:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          # Resource limits help prevent the app from crashing your Proxmox node
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "500m"
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10

@@ -15,4 +15,9 @@ public class controller {
     public String welcome(){
         return "welcome";
     }
+
+    @GetMapping("success")
+    public String success(){
+        return "success";
+    }
 }

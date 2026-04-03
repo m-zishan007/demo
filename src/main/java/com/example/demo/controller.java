@@ -10,4 +10,9 @@ public class controller {
     public String hello(){
         return "hello";
     }
+
+    @GetMapping("welcome")
+    public String welcome(){
+        return "welcome";
+    }
 }

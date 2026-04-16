@@ -28,7 +28,7 @@ spec:
           env:
             # This line triggers the use of application-dev.properties
             - name: SPRING_PROFILES_ACTIVE
-              value: "dev"
+              value: "local"
 
             # DB URL from ConfigMap
             - name: SPRING_DATASOURCE_URL

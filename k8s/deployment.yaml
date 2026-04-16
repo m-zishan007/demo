@@ -48,6 +48,14 @@ spec:
                 secretKeyRef:
                   name: db-credentials
                   key: password
+
+            # Test variable
+            - name: TEST_VARIABLE
+              valueFrom:
+                configMapKeyRef:
+                  name: demo-config
+                  key: TEST_VAR
+
           ports:
             - containerPort: 8080
           # Resource limits help prevent the app from crashing your Proxmox node

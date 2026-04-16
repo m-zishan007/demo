@@ -5,3 +5,4 @@ metadata:
 data:
   DB_URL: "jdbc:postgresql://192.168.1.81:5432/dev-db"
   DB_NAME: "demo"
+  TEST_VAR: "this is test variable to display whether profile is working or not. "

@@ -25,6 +25,29 @@ spec:
           # Replace 'mzishan007' with your actual Docker Hub ID
           image: mzishan007/demo:latest
           imagePullPolicy: Always
+          env:
+            # This line triggers the use of application-dev.properties
+            - name: SPRING_PROFILES_ACTIVE
+              value: "dev"
+
+            # DB URL from ConfigMap
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: demo-config
+                  key: DB_URL
+
+            # Credentials from Secret
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: username
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: password
           ports:
             - containerPort: 8080
           # Resource limits help prevent the app from crashing your Proxmox node

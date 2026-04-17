@@ -67,13 +67,13 @@ spec:
             - name: MINIO_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
-                  name: demo-secrets
+                  name: db-credentials
                   key: minio-access-key
 
             - name: MINIO_SECRET_KEY
               valueFrom:
                 secretKeyRef:
-                  name: demo-secrets
+                  name: db-credentials
                   key: minio-secret-key
 
           ports:

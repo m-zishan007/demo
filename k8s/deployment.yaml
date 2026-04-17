@@ -56,6 +56,26 @@ spec:
                   name: demo-config
                   key: TEST_VAR
 
+            # MINIO URL from ConfigMap
+            - name: MINIO_SERVER_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: demo-config
+                  key: MINIO_URL
+
+            # minIO credentials
+            - name: MINIO_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: demo-secrets
+                  key: minio-access-key
+
+            - name: MINIO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: demo-secrets
+                  key: minio-secret-key
+
           ports:
             - containerPort: 8080
           # Resource limits help prevent the app from crashing your Proxmox node

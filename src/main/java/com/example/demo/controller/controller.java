@@ -18,6 +18,6 @@ public class controller {
 
     @GetMapping("success")
     public String success(){
-        return "successfull done ";
+        return "successful done ";
     }
 }
